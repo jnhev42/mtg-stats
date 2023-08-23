@@ -49,3 +49,8 @@ compatibility_date = "2023-08-21"
 # [[migrations]]
 # tag = "v1"
 # new_classes = ["MyDurableObject"]
+
+[dev]
+ip = "localhost"
+port = 8646
+local_protocol = "http"
