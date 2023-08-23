@@ -1,7 +1,8 @@
 import './style.css'
-import javascriptLogo from './javascript.svg'
+import javascriptLogo from '/javascript.svg'
 import viteLogo from '/vite.svg'
 import { setupCounter } from './counter.js'
+import { setupAskBackend } from './askBackend'
 
 document.querySelector('#app').innerHTML = `
   <div>
@@ -14,6 +15,7 @@ document.querySelector('#app').innerHTML = `
     <h1>Hello Vite!</h1>
     <div class="card">
       <button id="counter" type="button"></button>
+      <p id="askBackend"></p>
     </div>
     <p class="read-the-docs">
       Click on the Vite logo to learn more
@@ -22,3 +24,4 @@ document.querySelector('#app').innerHTML = `
 `
 
 setupCounter(document.querySelector('#counter'))
+setupAskBackend(document.querySelector('#askBackend'))
