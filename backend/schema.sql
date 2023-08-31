@@ -7,7 +7,7 @@ create table if not exists Season (
     unique (endDate)
 );
 
-drop table if exists Season;
+drop table if exists Deck;
 create table if not exists Deck (
     deckID integer PRIMARY KEY AUTOINCREMENT,
     deckName varchar(255) NOT NULL,
@@ -15,14 +15,14 @@ create table if not exists Deck (
     unique (deckLink)
 );
 
-drop table if exists Season;
+drop table if exists Player;
 create table if not exists Player (
     playerID integer PRIMARY KEY AUTOINCREMENT,
     playerName varchar(255) NOT NULL,
     unique (playerName)
 );
 
-drop table if exists Season;
+drop table if exists Tournament;
 create table if not exists Tournament (
     tournamentID integer PRIMARY KEY AUTOINCREMENT,
     seasonID int NOT NULL,
