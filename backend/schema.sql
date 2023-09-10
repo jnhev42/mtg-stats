@@ -25,7 +25,7 @@ create table if not exists Player (
 drop table if exists TournamentKind;
 create table if not exists TournamentKind (
     tournamentKindID integer PRIMARY KEY AUTOINCREMENT,
-    title varchar(255) NOT NULL,
+    kind varchar(255) NOT NULL,
     unique (kind)
 );
 
@@ -44,7 +44,7 @@ create table if not exists Tournament (
     tournamentDate date NOT NULL,
     tournamentName varchar(255),
     foreign key (seasonID) references Season (seasonID),
-    foreign key (tournamentTypeID) references TournamentKind (tournamentKindID),
+    foreign key (tournamentKindID) references TournamentKind (tournamentKindID),
     foreign key (tournamentLocationID) references TournamentLocation (tournamentLocationID),
     unique (tournamentDate)
 );

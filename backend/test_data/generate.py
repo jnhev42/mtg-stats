@@ -33,14 +33,30 @@ class Season:
     def sql(s):
         print(f"INSERT INTO Season VALUES ({s.ID}, '{s.start}', '{s.end}');")
 
+@dataclass
+class TournamentKind:
+    name: str
+    ID: int = field(default_factory=ID)
+    def sql(s):
+        print(f"INSERT INTO TournamentKind VALUES ({s.ID}, '{s.name}');")
+
+
+@dataclass
+class TournamentLocation:
+    name: str
+    ID: int = field(default_factory=ID)
+    def sql(s):
+        print(f"INSERT INTO TournamentLocation VALUES ({s.ID}, '{s.name}');")        
 
 @dataclass
 class Tournament:
     date: str
     season: Season
+    kind: TournamentKind 
+    location: TournamentLocation
     ID: int = field(default_factory=ID)
     def sql(s):
-        print(f"INSERT INTO Tournament VALUES ({s.ID}, {s.season.ID}, '{s.date}');")
+        print(f"INSERT INTO Tournament VALUES ({s.ID}, {s.season.ID}, {s.kind.ID}, {s.location.ID}, '{s.date}', NULL);")
 
 @dataclass
 class TournamentScore:
@@ -67,23 +83,26 @@ players = [Player("Jeremy"), Player("Dave"), Player("Matt"), Player("Jonah"),
 
 decks = [deck("Big White"),  deck("4 Colour"), deck("Czech Pile"),  deck("Enchantress"), deck("Grixis")]
 seasons = [Season("21-01-10", "21-04-24"), Season("22-11-16", "23-02-24"), Season("23-02-26", "23-11-09")]
+kinds = [TournamentKind("Championship"), TournamentKind("Weekly")]
+locations = [TournamentLocation("Moon"), TournamentLocation("Timbuktu"), TournamentLocation("Narnia")]
+
 tournaments = [
-    Tournament("21-01-11", seasons[0]),
-    Tournament("21-02-24", seasons[0]),
-    Tournament("21-02-28", seasons[0]),
-    Tournament("21-03-02", seasons[0]),
-    Tournament("21-04-14", seasons[0]),
-    Tournament("21-04-22", seasons[0]),
+    Tournament("21-01-11", seasons[0], kinds[1], locations[0]),
+    Tournament("21-02-24", seasons[0], kinds[1], locations[1]),
+    Tournament("21-02-28", seasons[0], kinds[0], locations[2]),
+    Tournament("21-03-02", seasons[0], kinds[1], locations[1]),
+    Tournament("21-04-14", seasons[0], kinds[0], locations[0]),
+    Tournament("21-04-22", seasons[0], kinds[1], locations[2]),
 
-    Tournament("22-11-23", seasons[1]),
-    Tournament("22-11-27", seasons[1]),
-    Tournament("22-12-25", seasons[1]),
-    Tournament("23-01-01", seasons[1]),
-    Tournament("23-02-22", seasons[1]),
+    Tournament("22-11-23", seasons[1], kinds[1], locations[1]),
+    Tournament("22-11-27", seasons[1], kinds[1], locations[2]),
+    Tournament("22-12-25", seasons[1], kinds[1], locations[2]),
+    Tournament("23-01-01", seasons[1], kinds[0], locations[0]),
+    Tournament("23-02-22", seasons[1], kinds[1], locations[1]),
 
-    Tournament("23-02-28", seasons[2]),
-    Tournament("23-03-12", seasons[2]),
-    Tournament("23-11-07", seasons[2]),
+    Tournament("23-02-28", seasons[2], kinds[1], locations[1]),
+    Tournament("23-03-12", seasons[2], kinds[0], locations[0]),
+    Tournament("23-11-07", seasons[2], kinds[0], locations[2]),
 ]
 
 r.seed(123)
