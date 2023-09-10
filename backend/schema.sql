@@ -22,12 +22,30 @@ create table if not exists Player (
     unique (playerName)
 );
 
+drop table if exists TournamentKind;
+create table if not exists TournamentKind (
+    tournamentKindID integer PRIMARY KEY AUTOINCREMENT,
+    title varchar(255) NOT NULL,
+    unique (kind)
+);
+
+drop table if exists TournamentLocation;
+create table if not exists TournamentLocation (
+    tournamentLocationID integer PRIMARY KEY AUTOINCREMENT,
+    locationName varchar(255) NOT NULL
+);
+
 drop table if exists Tournament;
 create table if not exists Tournament (
     tournamentID integer PRIMARY KEY AUTOINCREMENT,
     seasonID int NOT NULL,
+    tournamentKindID int NOT NULL,
+    tournamentLocationID int NOT NULL,
     tournamentDate date NOT NULL,
+    tournamentName varchar(255),
     foreign key (seasonID) references Season (seasonID),
+    foreign key (tournamentTypeID) references TournamentKind (tournamentKindID),
+    foreign key (tournamentLocationID) references TournamentLocation (tournamentLocationID),
     unique (tournamentDate)
 );
 
