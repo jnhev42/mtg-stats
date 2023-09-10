@@ -134,6 +134,8 @@ def sqlAll(collection):
 sqlAll(seasons)
 sqlAll(decks)
 sqlAll(players)
+sqlAll(locations)
+sqlAll(kinds)
 sqlAll(tournaments)
 sqlAll(tournamentScores)
 
