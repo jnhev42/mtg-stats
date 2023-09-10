@@ -5,9 +5,13 @@
   "scripts": {
     "deploy": "wrangler deploy",
     "start": "wrangler dev",
-    "wrangler":"wrangler"
+    "wrangler": "wrangler",
+    "init-db-local": "wrangler d1 execute mtg-stats-db --file=./schema.sql --local && wrangler d1 execute mtg-stats-db --file=./test_data/sampledata123.sql --local"
   },
   "devDependencies": {
     "wrangler": "^3.0.0"
+  },
+  "dependencies": {
+    "itty-router": "^4.0.22"
   }
 }
