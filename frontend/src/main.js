@@ -1,8 +1,8 @@
 import './styles/common.css'
-import { setupPlayerStats } from './playerSelect.js'
+import { setupPlayerSelect } from './playerSelect.js'
 
 document.querySelector('#app').innerHTML = `
-  <div id="player-stats"> </div>      
+  <div id="player-select"> </div>      
 `;
 
-setupPlayerStats(document.querySelector('#player-stats'))
+setupPlayerSelect(document.querySelector('#player-select'))

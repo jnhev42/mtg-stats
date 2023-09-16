@@ -3,7 +3,7 @@ import { searchBar } from './components/searchBar';
 import { parseHTML, backendURL, parseHTMLElement, documentFragment } from './util';
 
 
-export async function setupPlayerStats(element) 
+export async function setupPlayerSelect(element) 
 {   
     const resp = await fetch(backendURL + 'All_Players', { mode: "cors" });
     let playersData = await resp.json();
