@@ -1,0 +1,10 @@
+.search-bar {
+    background-color: var(--emph-color);
+    border-radius: var(--border-raduis);
+    border: 4px solid var(--emph-color);
+    margin: 5px;
+}
+
+.search-bar:focus {
+    border-color: var(--accent-color);
+}
